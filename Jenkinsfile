@@ -42,13 +42,6 @@ pipeline{
                 }
             }
         }
-    stage("TRIVY") {
-    	steps {
-        	sh """
-            	trivy image --timeout 10m --skip-version-check swapnilhub/amazon:latest > trivyimage.txt 2>&1
-        		"""
-    	}
-	}
 	stage('Deploy to container'){
             steps{
                 sh 'docker run -d --name amazon -p 3000:3000 swapnilhub/amazon:latest'
