@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: ''
+                git branch: 'master', url: 'https://github.com/devops-with-Git/Amazon-Front-Page.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -23,13 +23,6 @@ pipeline{
                 withSonarQubeEnv('sonar-server') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Amazon \
                     -Dsonar.projectKey=Amazon '''
-                }
-            }
-        }
-        stage("quality gate"){
-           steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
                 }
             }
         }
