@@ -49,7 +49,7 @@ pipeline{
         }
 	stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name amazon -p 3000:3000 swapnilhub/amazon:latest'
+                sh 'docker run -d --name amazon -p 3030:3030 swapnilhub/amazon:latest'
             }
         }
     }
