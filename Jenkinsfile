@@ -34,7 +34,7 @@ pipeline{
 	stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                   withDockerRegistry(credentialsId: 'Docker-Hub', toolName: 'docker'){
                        sh "docker build -t amazon ."
                        sh "docker tag amazon swapnilhub/amazon:latest "
                        sh "docker push swapnilhub/amazon:latest "
